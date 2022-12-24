@@ -53,4 +53,10 @@ app.put("/save", async (req, res) => {
   res.status(200).send({ success: true, message: "Data saved successfully" });
 });
 
+// Get All User Data
+app.get("/users", async (req, res) => {
+  const data = await userCollection.find({}).toArray();
+  res.status(200).send({ success: true, data });
+});
+
 app.listen(PORT, () => console.log("Server Running on: ", PORT));
